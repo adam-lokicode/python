@@ -9,6 +9,7 @@ spec:
   selector:
     matchLabels:
       app: flask-app
+  progressDeadlineSeconds: 600  # Increased timeout to 10 minutes (default is 600 seconds)
   template:
     metadata:
       labels:
@@ -17,7 +18,7 @@ spec:
       containers:
         - name: flask-app
           image: adam649/testrepo:latest # Replace with your Docker image tag if needed
-          command: ["python", "/opt/app/dronedemo/main.py"]  # <-- Ensure correct startup command!
+          command: ["python", "/opt/app/dronedemo/main.py"]  # Ensure correct startup command
           ports:
             - containerPort: 5000
           env:
