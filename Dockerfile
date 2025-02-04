@@ -10,8 +10,11 @@ WORKDIR /opt/app
 # Copy the application files
 COPY . /opt/app
 
-# Install the required Python dependencies
+# Verify files exist after COPY
+RUN ls -l /opt/app/dronedemo
+
+# Install dependencies
 RUN pip install -r requirements.txt
 
-# Specify the main script to run
+# Run Flask app
 CMD ["python", "/opt/app/dronedemo/main.py"]
